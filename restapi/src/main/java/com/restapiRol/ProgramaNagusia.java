@@ -1,13 +1,13 @@
-package restapi.restapi;
+package com.restapiRol;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class RestapiApplication {
+public class ProgramaNagusia {
 
 	public static void main(String[] args) {
-		SpringApplication.run(RestapiApplication.class, args);
+		SpringApplication.run(ProgramaNagusia.class, args);
 	}
 
 }
