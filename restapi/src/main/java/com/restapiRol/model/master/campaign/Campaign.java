@@ -8,7 +8,7 @@ import com.restapiRol.model.master.campaign.npc.Npc;
 import com.restapiRol.model.master.campaign.quest.Quest;
 
 public class Campaign {
-    private String id;
+    private int id;
     private String name;
     private String description;
     private List<Country> country;
@@ -17,7 +17,7 @@ public class Campaign {
     private List<Quest> quest;
 
     // Contructor
-    public Campaign(String id, String name, String description, List<Country> country, List<Npc> npc, List<Item> item,
+    public Campaign(int id, String name, String description, List<Country> country, List<Npc> npc, List<Item> item,
             List<Quest> quest) {
         this.id = id;
         this.name = name;
@@ -33,11 +33,11 @@ public class Campaign {
     }
 
     // getters and setters
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 

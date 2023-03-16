@@ -6,6 +6,7 @@ import java.util.Optional;
 
 import javax.annotation.PostConstruct;
 
+import org.bson.Document;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -68,7 +69,7 @@ public class MongoDBMasterRepository implements MasterRepository {
     ///
     @Override
     public Master saveCampaign(Master master) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'saveCampaign'");
+        masterCollection.updateOne(eq("_id", master.getId()), new Document("$set", new Document("campaign", master.getCampaign())));
+        return master;
     }
 }
