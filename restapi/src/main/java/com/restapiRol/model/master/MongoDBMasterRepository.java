@@ -10,13 +10,14 @@ import org.bson.Document;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
+import com.mongodb.client.model.Filters;
 import com.mongodb.ReadConcern;
 import com.mongodb.ReadPreference;
 import com.mongodb.TransactionOptions;
 import com.mongodb.WriteConcern;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoCollection;
+import com.mongodb.client.model.Updates;
 import com.restapiRol.model.master.campaign.Campaign;
 import com.restapiRol.model.master.campaign.monster.Monster;
 
@@ -55,21 +56,31 @@ public class MongoDBMasterRepository implements MasterRepository {
     }
 
     @Override
-    public long deleteMaster(String name) {
-        return masterCollection.deleteMany(eq("name", name)).getDeletedCount();
+    public long deleteMaster(int masterId) {
+        return masterCollection.deleteMany(eq("_id", masterId)).getDeletedCount();
     }
 
     @Override
     public Optional<Master> findById(int masterId) {
         Master master = masterCollection.find(eq("_id", masterId)).first();
         return Optional.ofNullable(master);
-    }    
+    }
+
     ///
     /// Campaign
     ///
     @Override
     public Master saveCampaign(Master master) {
-        masterCollection.updateOne(eq("_id", master.getId()), new Document("$set", new Document("campaign", master.getCampaign())));
+        masterCollection.updateOne(eq("_id", master.getId()),
+                new Document("$set", new Document("campaign", master.getCampaign())));
         return master;
     }
+
+    @Override
+    public long deleteCampaign(int masterId, int campaignId) {
+        return masterCollection.updateOne(
+            Filters.and(Filters.eq("_id", masterId), Filters.eq("campaign._id", campaignId)),
+            Updates.pull("campaign", new Document("_id", campaignId))
+        ).getModifiedCount();
+    }    
 }

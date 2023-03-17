@@ -1,9 +1,11 @@
 package com.restapiRol.controller;
 
+import java.lang.ModuleLayer.Controller;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import javax.security.auth.message.callback.PrivateKeyCallback.Request;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
@@ -36,6 +38,8 @@ import com.restapiRol.model.master.campaign.quest.Quest;
 public class MasterController {
     @Autowired
     private MasterRepository masterRepository;
+    @Autowired
+    private CampaignController campaignController;
 
     @RequestMapping("/error")
     public String handleError(HttpServletRequest request) {
@@ -72,10 +76,10 @@ public class MasterController {
         return "Saved";
     }
 
-    @DeleteMapping(path = "/deleteMaster/{name}")
-    public ResponseEntity<Void> deleteMaster(@PathVariable String name) {
+    @DeleteMapping(path = "/deleteMaster/{masterId}")
+    public ResponseEntity<Void> deleteMaster(@PathVariable int masterId) {
         try {
-            masterRepository.deleteMaster(name);
+            masterRepository.deleteMaster(masterId);
             return ResponseEntity.ok().build();
         } catch (Exception e) {
             System.out.println("Error");
@@ -84,34 +88,16 @@ public class MasterController {
     }
 
     //
-    // Campaings controller
+    // Campaigns controller
     //
-    @PostMapping(path = "/addCampaign/{masterId}")
-public ResponseEntity<Master> addCampaignToMaster(@PathVariable int masterId, @RequestParam String campaignName,
-        @RequestParam String campaignDescription) {
-    Optional<Master> masterOptional = masterRepository.findById(masterId);
-    // If the selected master exists
-    if (masterOptional.isPresent()) {
-        Campaign campaign = new Campaign();
-        campaign.setName(campaignName);
-        campaign.setDescription(campaignDescription);
-        campaign.setCountry(new ArrayList<Country>());
-        campaign.setNpc(new ArrayList<Npc>());
-        campaign.setItem(new ArrayList<Item>());
-        campaign.setQuest(new ArrayList<Quest>());
-        Master master = masterOptional.get();
-        // We read all the campaign and we add new campaign to the arraylist
-        List<Campaign> campaignList = master.getCampaign();
-        // Count the number of campaigns in the list and add 1 to get the new ID
-        int newCampaignId = campaignList.size() + 1;
-        campaign.setId(newCampaignId);
-        campaignList.add(campaign);
-        master.setCampaign(campaignList);
-        Master updatedMaster = masterRepository.saveCampaign(master);
-        return ResponseEntity.ok(updatedMaster);
-    } else {
-        return ResponseEntity.notFound().build();
+    @PostMapping(path = "/{masterId}/addCampaign")
+    public ResponseEntity<Master> addCampaignToMaster(@PathVariable int masterId, @RequestParam String campaignName,
+            @RequestParam String campaignDescription) {
+        return campaignController.addCampaignToMaster(masterId, campaignName, campaignDescription);
     }
-}
 
+    @DeleteMapping(path = "/{masterId}/deleteCampaign/{campaignId}")
+    public ResponseEntity<Void> deleteCampaign(@PathVariable int masterId, @PathVariable int campaignId) {
+        return campaignController.deleteCampaign(masterId, campaignId);
+    }
 }

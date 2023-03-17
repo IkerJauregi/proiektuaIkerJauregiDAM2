@@ -11,8 +11,9 @@ import com.restapiRol.model.master.campaign.Campaign;
 public interface MasterRepository {
     List<Master> findAllMasters();
     Master saveMaster(Master master);
-    long deleteMaster(String name);
+    long deleteMaster(int masterId);
     Optional<Master>  findById(int masterId);
     // Campaign
     Master saveCampaign(Master master);
+    long deleteCampaign(int masterId, int campaignId);
 }
