@@ -82,5 +82,5 @@ public class MongoDBMasterRepository implements MasterRepository {
             Filters.and(Filters.eq("_id", masterId), Filters.eq("campaign._id", campaignId)),
             Updates.pull("campaign", new Document("_id", campaignId))
         ).getModifiedCount();
-    }    
+    }
 }
