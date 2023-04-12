@@ -10,4 +10,5 @@ export interface Campaign{
     npc: Npc[];
     item: Item[];
     quest: Quest[];
+    masterId: number;
 }
