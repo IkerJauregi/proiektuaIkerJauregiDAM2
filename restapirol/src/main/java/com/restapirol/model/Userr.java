@@ -7,8 +7,11 @@ import com.restapirol.model.campaign.Campaign;
 
 import java.util.List;
 
+import javax.validation.constraints.NotBlank;
+
 public class Userr {
     private int id;
+    @NotBlank(message = "Name is mandatory")
     private String name;
     private String password;
     @Nullable
