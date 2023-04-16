@@ -46,7 +46,6 @@ public class MasterController {
         // Do some error handling here
         return "An error occurred: " + request.getAttribute("javax.servlet.error.message");
     }
-
     //
     // Master controller
     //
