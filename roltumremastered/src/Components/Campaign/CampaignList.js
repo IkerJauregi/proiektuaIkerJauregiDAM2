@@ -5,6 +5,7 @@ import { Card } from "../../Components/Card/Card";
 
 function CampaignList() {
     const [campaigns, setCampaigns] = useState([]);
+    // userId is a parameter in the URL put there by the <Route> in src\index.js so the name must match
     const { userId } = useParams();
 
     useEffect(() => {
