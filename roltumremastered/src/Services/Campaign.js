@@ -1,5 +1,6 @@
-export let displayCampaign = async (userID) => {
+export function displayCampaign(userID) {
   if (!userID) {
+    console.log("No user ID provided");
     return [];
   }else{
     return fetch(`http://localhost:8080/user/showMasterCampaigns/${userID}`)
@@ -7,7 +8,6 @@ export let displayCampaign = async (userID) => {
     .then(data => {
       let user = data;
       let campaigns = user.campaign || [];
-      console.log(campaigns);
       return { user, campaigns };
     })
     .catch(error => {
@@ -15,7 +15,7 @@ export let displayCampaign = async (userID) => {
       throw error; // or return Promise.reject(error);
     });
   }
-}    
+} 
 
 export function createCampaign(campaignName, campaignDescription) {
 

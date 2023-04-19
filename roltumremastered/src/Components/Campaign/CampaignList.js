@@ -8,12 +8,13 @@ function CampaignList() {
     const { userId } = useParams();
 
     useEffect(() => {
-        displayCampaign(userId)
-            .then(data => {
-                console.log("Data: " + data);
-                setCampaigns(data.campaigns || []);
-            })
-            .catch(error => console.log(error));
+        if (userId) { // Verificación de userId no undefined
+            displayCampaign(userId)
+                .then(data => {
+                    setCampaigns(data.campaigns || []);
+                })
+                .catch(error => console.log(error));
+        }
     }, [userId]);
 
     return (

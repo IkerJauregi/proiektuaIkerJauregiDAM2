@@ -10,10 +10,10 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-    <Routes>
-      <Route path="/" element={<App />} />
-      <Route path="/campaigns/:id" element={<CampaignList />} />
-    </Routes>
+      <Routes>
+        <Route path="/" element={<App />} />
+        <Route path="/campaigns/:userId" element={<CampaignList />} />
+      </Routes>
     </BrowserRouter>
   </React.StrictMode>,
 );
