@@ -1,23 +1,19 @@
-package com.restapirol.model.campaign.country;
+package com.restapirol.model.campaign.town;
 
 import java.util.List;
 
-import com.restapirol.model.campaign.country.province.Province;
-
-public class Country {
+public class Town {
     private int id;
     private String name;
     private String description;
-    private List<Province> province;
 
-    public Country() {
+    public Town() {
     }
 
-    public Country(int id, String name, String description, List<Province> province) {
+    public Town(int id, String name, String description) {
         this.id = id;
         this.name = name;
         this.description = description;
-        this.province = province;
     }
 
     public int getId() {
@@ -43,13 +39,4 @@ public class Country {
     public void setDescription(String description) {
         this.description = description;
     }
-
-    public List<Province> getProvince() {
-        return province;
-    }
-
-    public void setProvince(List<Province> province) {
-        this.province = province;
-    }
-
 }

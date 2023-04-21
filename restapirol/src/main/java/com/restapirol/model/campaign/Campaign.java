@@ -2,27 +2,27 @@ package com.restapirol.model.campaign;
 
 import java.util.List;
 
-import com.restapirol.model.campaign.country.Country;
 import com.restapirol.model.campaign.item.Item;
 import com.restapirol.model.campaign.npc.Npc;
 import com.restapirol.model.campaign.quest.Quest;
+import com.restapirol.model.campaign.town.Town;
 
 public class Campaign {
     private int id;
     private String name;
     private String description;
-    private List<Country> country;
+    private List<Town> town;
     private List<Npc> npc;
     private List<Item> item;
     private List<Quest> quest;
 
     // Contructor
-    public Campaign(int id, String name, String description, List<Country> country, List<Npc> npc, List<Item> item,
+    public Campaign(int id, String name, String description, List<Town> town, List<Npc> npc, List<Item> item,
             List<Quest> quest) {
         this.id = id;
         this.name = name;
         this.description = description;
-        this.country = country;
+        this.town = town;
         this.npc = npc;
         this.item = item;
         this.quest = quest;
@@ -57,12 +57,12 @@ public class Campaign {
         this.description = description;
     }
 
-    public List<Country> getCountry() {
-        return country;
+    public List<Town> getTown() {
+        return town;
     }
 
-    public void setCountry(List<Country> country) {
-        this.country = country;
+    public void setTown(List<Town> town) {
+        this.town = town;
     }
 
     public List<Npc> getNpc() {

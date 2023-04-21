@@ -18,10 +18,10 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 import com.restapirol.model.UserRepository;
 import com.restapirol.model.Userr;
 import com.restapirol.model.campaign.Campaign;
-import com.restapirol.model.campaign.country.Country;
 import com.restapirol.model.campaign.item.Item;
 import com.restapirol.model.campaign.npc.Npc;
 import com.restapirol.model.campaign.quest.Quest;
+import com.restapirol.model.campaign.town.Town;
 
 @RestController
 @RequestMapping(path = "/campaigns")
@@ -39,7 +39,7 @@ public class CampaignController {
             Campaign campaign = new Campaign();
             campaign.setName(campaignName);
             campaign.setDescription(campaignDescription);
-            campaign.setCountry(new ArrayList<Country>());
+            campaign.setTown(new ArrayList<Town>());
             campaign.setNpc(new ArrayList<Npc>());
             campaign.setItem(new ArrayList<Item>());
             campaign.setQuest(new ArrayList<Quest>());
