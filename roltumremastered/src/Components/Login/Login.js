@@ -19,9 +19,14 @@ function Login() {
       loginUser(name, password)
         .then((response) => {
           // Lets display all the user campaigns and adventurers
-          console.log(response.id);
-          displayCampaign(response.id)
-          navigate(`/campaigns/${response.id}`)
+          console.log("Login successful:", response);
+          const { id, name } = response;
+          sessionStorage.setItem("userId", id);
+          sessionStorage.setItem("userName", name);
+          navigate(`/menu-acm`);
+          // displayCampaign(response.id)
+          // navigate(`/campaigns/${response.id}`)
+          return response;
         })
         .catch((error) => {
           console.error('Login failed:', error);

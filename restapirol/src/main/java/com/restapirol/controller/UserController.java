@@ -1,9 +1,13 @@
 package com.restapirol.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -52,30 +56,32 @@ public class UserController {
         return "Saved";
     }
 
-    // @PostMapping(path = "/login")
-    // public ResponseEntity<Userr> login(@RequestParam String name, @RequestParam
-    // String password) {
-    // Userr user = userRepository.findByName(name);
-    // if (user != null) {
-    // if (passwordEncoder.matches(password, user.getPassword())) {
-    // return ResponseEntity.ok(user);
-    // }
-    // }
-    // return ResponseEntity.notFound().build();
-    // }
-
     // We receive a user object with name and password and if the user exists and
     // the password is correct we return the user
     @PostMapping(path = "/login")
-    public ResponseEntity<Userr> login(@RequestBody Userr user) {
+    public ResponseEntity<Userr> login(@RequestBody Userr user, HttpSession session) {
         Userr dbUser = userRepository.findByName(user.getName());
         if (dbUser != null) {
             if (passwordEncoder.matches(user.getPassword(), dbUser.getPassword())) {
+                session.setAttribute("user", dbUser);
                 return ResponseEntity.ok(dbUser);
             }
         }
         return ResponseEntity.notFound().build();
     }
+    // We receive a user object with name and password and if the user exists and
+    // the password is correct we return the user
+    @GetMapping(path = "/getUser")
+    public ResponseEntity<Map<String, Object>> getUser(HttpSession session) {
+        Userr user = (Userr) session.getAttribute("user");
+        if (user != null) {
+            Map<String, Object> userData = new HashMap<>();
+            userData.put("id", user.getId());
+            userData.put("username", user.getName());
+            return ResponseEntity.ok(userData);
+        }
+        return ResponseEntity.notFound().build();
+    }    
 
     @GetMapping(path = "/showMasterCampaigns/{userID}")
     public ResponseEntity<Userr> showMasterCampaigns(@PathVariable int userID) {

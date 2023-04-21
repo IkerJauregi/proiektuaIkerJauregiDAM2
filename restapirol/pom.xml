@@ -49,6 +49,16 @@
     		<groupId>org.springframework.boot</groupId>
     		<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>com.navercorp.pinpoint</groupId>
+			<artifactId>pinpoint-basic-login</artifactId>
+			<version>2.5.1-p1</version>
+		</dependency>
+		<dependency>
+			<groupId>de.coderspack</groupId>
+			<artifactId>jwt-spring-boot-library</artifactId>
+			<version>0.0.1</version>
+		</dependency>
     </dependencies>
 
 	<build>
