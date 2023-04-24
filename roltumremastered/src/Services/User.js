@@ -1,10 +1,9 @@
-function registerUser(userName, userPasword) {
+function registerUser(userName, userPassword) {
     const requestOptions = {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name: userName, password: userPasword })
+        body: JSON.stringify({ name: userName, password: userPassword })
     };
-
     return fetch("http://localhost:8080/user/register", requestOptions)
         .then(response => {
             if (!response.ok) {
@@ -13,7 +12,7 @@ function registerUser(userName, userPasword) {
             return response.json();
         })
         .then(data => {
-            console.log("Registration successful:", data);
+            console.log("Registration successful:", data.message);
             return data;
         })
         .catch(error => {
@@ -21,6 +20,8 @@ function registerUser(userName, userPasword) {
             throw error;
         });
 }
+
+
 
 function loginUser(userName, userPasword) {
     const requestOptions = {

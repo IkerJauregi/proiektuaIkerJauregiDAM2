@@ -1,7 +1,5 @@
 package com.restapirol.model.campaign.town;
 
-import java.util.List;
-
 public class Town {
     private int id;
     private String name;

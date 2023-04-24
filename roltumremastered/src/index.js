@@ -6,6 +6,7 @@ import MenuACM from './Pages/MenuACM/MenuACM';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import CampaignList from './Components/Campaign/CampaignList';
+import Register from './Components/Form/Register';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -13,6 +14,7 @@ root.render(
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />} />
+        <Route path="/register" element={<Register/>} />
         <Route path="/menu-acm" element={<MenuACM />} />
         <Route path="/campaigns/:userId" element={<CampaignList />} />
       </Routes>

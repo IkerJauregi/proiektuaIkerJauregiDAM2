@@ -45,7 +45,9 @@ public class UserController {
     }
 
     @PostMapping(path = "/register")
-    public @ResponseBody String addNewUser(@RequestParam String name, @RequestParam String password) {
+    public ResponseEntity<Map<String, String>> addNewUser(@RequestBody Map<String, String> userData) {
+        String name = userData.get("name");
+        String password = userData.get("password");
         Userr user = new Userr();
         user.setName(name);
         String hashedPassword = passwordEncoder.encode(password);
@@ -53,8 +55,11 @@ public class UserController {
         user.setAdventurer(new ArrayList<Adventurer>());
         user.setCampaign(new ArrayList<Campaign>());
         userRepository.saveUser(user);
-        return "Saved";
+        Map<String, String> response = new HashMap<>();
+        response.put("message", "User registered");
+        return ResponseEntity.ok(response);
     }
+    
 
     // We receive a user object with name and password and if the user exists and
     // the password is correct we return the user

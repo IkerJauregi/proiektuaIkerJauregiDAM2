@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./Login.css";
+import "./form.css";
 import { loginUser } from "../../Services/User";
 import { useNavigate } from "react-router-dom";
 import { displayCampaign } from "../../Services/Campaign";
@@ -21,42 +21,50 @@ function Login() {
           // Lets display all the user campaigns and adventurers
           console.log("Login successful:", response);
           const { id, name } = response;
+          console.log("id:", id + " name:", name);
           sessionStorage.setItem("userId", id);
           sessionStorage.setItem("userName", name);
+          console.log("sessionStorage:", sessionStorage);
           navigate(`/menu-acm`);
           // displayCampaign(response.id)
           // navigate(`/campaigns/${response.id}`)
           return response;
         })
         .catch((error) => {
-          console.error('Login failed:', error);
+          console.error("Login failed:", error);
           throw error;
         });
     }
   };
 
+  const handleCreateAccount = (e) => {
+    e.preventDefault();
+    navigate("/register");
+  }
+
   return (
-    <div className="login-container">
-      <form className="login-form" onSubmit={handleSubmit}>
+    <div className="form-container">
+      <form className="form" onSubmit={handleSubmit}>
         <h1>Login</h1>
         {error && <p className="login-error">{error}</p>}
         <input
-          className="login-input"
+          className="input"
           type="text"
           placeholder="Name"
           value={name}
           onChange={(e) => setName(e.target.value)}
         />
         <input
-          className="login-input"
+          className="input"
           type="password"
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button className="login-button" type="submit">
+        <button className="button" type="submit">
           Submit
         </button>
+        <a href="/register" onClick={handleCreateAccount}>Create an account</a>
       </form>
     </div>
   );
