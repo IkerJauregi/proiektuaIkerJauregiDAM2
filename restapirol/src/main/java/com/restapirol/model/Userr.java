@@ -4,6 +4,7 @@ import org.springframework.lang.Nullable;
 
 import com.restapirol.model.adventurer.Adventurer;
 import com.restapirol.model.campaign.Campaign;
+import com.restapirol.model.monster.Monster;
 
 import java.util.List;
 
@@ -18,16 +19,20 @@ public class Userr {
     private List<Adventurer> adventurers;
     @Nullable
     private List<Campaign> campaigns;
+    @Nullable
+    private List<Monster> monsters;
 
     public Userr() {
     }
 
-    public Userr(int id, String name, String password, List<Adventurer> adventurers, List<Campaign> campaigns) {
+    public Userr(int id, String name, String password, List<Adventurer> adventurers, List<Campaign> campaigns,
+            List<Monster> monsters) {
         this.id = id;
         this.name = name;
         this.password = password;
         this.adventurers = adventurers;
         this.campaigns = campaigns;
+        this.monsters = monsters;
     }
 
     public int getId() {
@@ -54,19 +59,28 @@ public class Userr {
         this.password = password;
     }
 
-    public List<Adventurer> getAdventurer() {
+    public List<Adventurer> getAdventurers() {
         return adventurers;
     }
 
-    public void setAdventurer(List<Adventurer> adventurers) {
+    public void setAdventurers(List<Adventurer> adventurers) {
         this.adventurers = adventurers;
     }
 
-    public List<Campaign> getCampaign() {
+    public List<Campaign> getCampaigns() {
         return campaigns;
     }
 
-    public void setCampaign(List<Campaign> campaigns) {
+    public void setCampaigns(List<Campaign> campaigns) {
         this.campaigns = campaigns;
     }
+
+    public List<Monster> getMonsters() {
+        return monsters;
+    }
+
+    public void setMonsters(List<Monster> monsters) {
+        this.monsters = monsters;
+    }
+    
 }

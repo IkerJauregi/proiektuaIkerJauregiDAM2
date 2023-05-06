@@ -7,6 +7,7 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import CampaignList from './Components/Campaign/CampaignList';
 import Register from './Components/Form/Register';
+import { CampaignUpdateForm } from './Components/Form/CampaignForm';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -14,9 +15,10 @@ root.render(
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />} />
-        <Route path="/register" element={<Register/>} />
+        <Route path="/register" element={<Register />} />
         <Route path="/menu-acm" element={<MenuACM />} />
         <Route path="/campaigns/:userId" element={<CampaignList />} />
+        <Route path="/update-campaign/:userId/:campaignId" element={<CampaignUpdateForm />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>,

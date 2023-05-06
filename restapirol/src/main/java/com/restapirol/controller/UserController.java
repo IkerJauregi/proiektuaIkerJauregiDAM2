@@ -52,8 +52,8 @@ public class UserController {
         user.setName(name);
         String hashedPassword = passwordEncoder.encode(password);
         user.setPassword(hashedPassword);
-        user.setAdventurer(new ArrayList<Adventurer>());
-        user.setCampaign(new ArrayList<Campaign>());
+        user.setAdventurers(new ArrayList<Adventurer>());
+        user.setCampaigns(new ArrayList<Campaign>());
         userRepository.saveUser(user);
         Map<String, String> response = new HashMap<>();
         response.put("message", "User registered");

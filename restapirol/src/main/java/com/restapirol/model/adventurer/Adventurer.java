@@ -7,20 +7,29 @@ public class Adventurer {
     private String name;
     private String classAdventurer;
     private String raceAdventurer;
-    private List<AttributesAdventurer> attributes;
-    private List<SkillsAdventurer> skills;
+    private int level;
+    private List<String> languages;
+    private List<String> inventory;
+    private Stats stats;
+    private Money money;
+    private Weapon weapon;
 
     public Adventurer() {
     }
 
-    public Adventurer(int id, String name, String classAdventurer, String raceAdventurer,
-            List<AttributesAdventurer> attributes, List<SkillsAdventurer> skills) {
+    public Adventurer(int id, String name, String classAdventurer, String raceAdventurer, int level,
+            List<String> languages, List<String> inventory, Stats stats,
+            Money money, Weapon weapon) {
         this.id = id;
         this.name = name;
         this.classAdventurer = classAdventurer;
         this.raceAdventurer = raceAdventurer;
-        this.attributes = attributes;
-        this.skills = skills;
+        this.level = level;
+        this.languages = languages;
+        this.inventory = inventory;
+        this.stats = stats;
+        this.money = money;
+        this.weapon = weapon;
     }
 
     public int getId() {
@@ -55,20 +64,52 @@ public class Adventurer {
         this.raceAdventurer = raceAdventurer;
     }
 
-    public List<AttributesAdventurer> getAttributes() {
-        return attributes;
+    public int getLevel() {
+        return level;
     }
 
-    public void setAttributes(List<AttributesAdventurer> attributes) {
-        this.attributes = attributes;
+    public void setLevel(int level) {
+        this.level = level;
     }
 
-    public List<SkillsAdventurer> getSkills() {
-        return skills;
+    public List<String> getLanguages() {
+        return languages;
     }
 
-    public void setSkills(List<SkillsAdventurer> skills) {
-        this.skills = skills;
+    public void setLanguages(List<String> languages) {
+        this.languages = languages;
+    }
+
+    public List<String> getInventory() {
+        return inventory;
+    }
+
+    public void setInventory(List<String> inventory) {
+        this.inventory = inventory;
+    }
+
+    public Stats getStats() {
+        return stats;
+    }
+
+    public void setStats(Stats stats) {
+        this.stats = stats;
+    }
+
+    public Money getMoney() {
+        return money;
+    }
+
+    public void setMoney(Money money) {
+        this.money = money;
+    }
+
+    public Weapon getWeapon() {
+        return weapon;
+    }
+
+    public void setWeapon(Weapon weapon) {
+        this.weapon = weapon;
     }
 
 }

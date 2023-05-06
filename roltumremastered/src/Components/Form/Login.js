@@ -4,6 +4,9 @@ import { loginUser } from "../../Services/User";
 import { useNavigate } from "react-router-dom";
 import { displayCampaign } from "../../Services/Campaign";
 
+// We clear the session storage on login
+// sessionStorage.clear()
+
 function Login() {
   let [name, setName] = useState("");
   let [password, setPassword] = useState("");

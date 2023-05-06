@@ -13,4 +13,9 @@ public interface UserRepository {
     // Campaign
     Userr saveCampaign(Userr userr);
     long deleteCampaignById(int userID, int campaignID);
+
+    // Adventurer
+    Userr saveAdventurer(Userr user);
+    // Monster
+    Userr saveMonster(Userr user);
 }

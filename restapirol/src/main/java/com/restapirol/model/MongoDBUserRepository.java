@@ -18,6 +18,7 @@ import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.restapirol.model.adventurer.Adventurer;
 import com.restapirol.model.campaign.Campaign;
+import com.restapirol.model.monster.Monster;
 
 @Repository
 public class MongoDBUserRepository implements UserRepository {
@@ -47,8 +48,9 @@ public class MongoDBUserRepository implements UserRepository {
     public Userr saveUser(Userr user) {
         long lastId = userrCollection.countDocuments() + 1;
         user.setId((int) lastId);
-        user.setAdventurer(new ArrayList<Adventurer>());
-        user.setCampaign(new ArrayList<Campaign>());
+        user.setAdventurers(new ArrayList<Adventurer>());
+        user.setCampaigns(new ArrayList<Campaign>());
+        user.setMonsters(new ArrayList<Monster>());
         userrCollection.insertOne(user);
         return user;
     }
@@ -64,17 +66,41 @@ public class MongoDBUserRepository implements UserRepository {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'deleteUser'");
     }
+    //
+    // Campaigns
+    //
 
+    // "Create campaign in MongoDB"
     @Override
     public Userr saveCampaign(Userr userr) {
         userrCollection.updateOne(eq("_id", userr.getId()),
-                new Document("$set", new Document("campaign", userr.getCampaign())));
+                new Document("$set", new Document("campaigns", userr.getCampaigns())));
         return userr;
     }
 
+    // "Delete campaign in MongoDB by id"
     @Override
     public long deleteCampaignById(int userID, int campaignID) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'deleteCampaignById'");
+    }
+
+    //
+    // Adventurers
+    //
+
+    // Create Adventurers
+    @Override
+    public Userr saveAdventurer(Userr userr) {
+        userrCollection.updateOne(eq("_id", userr.getId()),
+                new Document("$set", new Document("adventurers", userr.getAdventurers())));
+        return userr;
+    }
+
+    @Override
+    public Userr saveMonster(Userr userr) {
+        userrCollection.updateOne(eq("_id", userr.getId()),
+        new Document("$set", new Document("monsters", userr.getMonsters())));
+return userr;
     }
 }
