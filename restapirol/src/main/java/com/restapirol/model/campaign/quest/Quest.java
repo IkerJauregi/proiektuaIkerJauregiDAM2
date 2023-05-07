@@ -1,15 +1,17 @@
 package com.restapirol.model.campaign.quest;
 
+import java.util.List;
+
 public class Quest {
     private int id;
     private String questName;
     private String questDescription;
-    private String questBounty;
+    private List<String> questBounty;
 
     public Quest() {
     }
 
-    public Quest(int id, String questName, String questDescription, String questBounty) {
+    public Quest(int id, String questName, String questDescription, List<String> questBounty) {
         this.id = id;
         this.questName = questName;
         this.questDescription = questDescription;
@@ -40,12 +42,12 @@ public class Quest {
         this.questDescription = questDescription;
     }
 
-    public String getQuestBounty() {
+    public List<String> getQuestBounty() {
         return questBounty;
     }
 
-    public void setQuestBounty(String questBounty) {
+    public void setQuestBounty(List<String> questBounty) {
         this.questBounty = questBounty;
     }
-
+    
 }

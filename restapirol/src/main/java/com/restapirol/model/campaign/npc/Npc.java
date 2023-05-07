@@ -1,16 +1,18 @@
 package com.restapirol.model.campaign.npc;
 
+import java.util.List;
+
 public class Npc {
     private int id;
     private String npcName;
     private String npcDescription;
-    private String npcTags;
+    private List<String> npcTags;
     private String npcImage;
 
     public Npc() {
     }
 
-    public Npc(int id, String npcName, String npcDescription, String npcTags, String npcImage) {
+    public Npc(int id, String npcName, String npcDescription, List<String> npcTags, String npcImage) {
         this.id = id;
         this.npcName = npcName;
         this.npcDescription = npcDescription;
@@ -42,11 +44,11 @@ public class Npc {
         this.npcDescription = npcDescription;
     }
 
-    public String getNpcTags() {
+    public List<String> getNpcTags() {
         return npcTags;
     }
 
-    public void setNpcTags(String npcTags) {
+    public void setNpcTags(List<String> npcTags) {
         this.npcTags = npcTags;
     }
 
@@ -57,5 +59,5 @@ public class Npc {
     public void setNpcImage(String npcImage) {
         this.npcImage = npcImage;
     }
-
+    
 }

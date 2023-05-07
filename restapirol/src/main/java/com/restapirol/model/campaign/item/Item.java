@@ -6,22 +6,17 @@ public class Item {
     private String itemDescription;
     private String itemClass;
     private String itemStats;
-    private String itemOwner;
-    private String itemPlace;
-    private boolean itemCurse;
+    private Curse itemCurse;
 
     public Item() {
     }
 
-    public Item(int id, String itemName, String itemDescription, String itemClass, String itemStats, String itemOwner,
-            String itemPlace, boolean itemCurse) {
+    public Item(int id, String itemName, String itemDescription, String itemClass, String itemStats, Curse itemCurse) {
         this.id = id;
         this.itemName = itemName;
         this.itemDescription = itemDescription;
         this.itemClass = itemClass;
         this.itemStats = itemStats;
-        this.itemOwner = itemOwner;
-        this.itemPlace = itemPlace;
         this.itemCurse = itemCurse;
     }
 
@@ -65,27 +60,11 @@ public class Item {
         this.itemStats = itemStats;
     }
 
-    public String getItemOwner() {
-        return itemOwner;
-    }
-
-    public void setItemOwner(String itemOwner) {
-        this.itemOwner = itemOwner;
-    }
-
-    public String getItemPlace() {
-        return itemPlace;
-    }
-
-    public void setItemPlace(String itemPlace) {
-        this.itemPlace = itemPlace;
-    }
-
-    public boolean isItemCurse() {
+    public Curse getItemCurse() {
         return itemCurse;
     }
 
-    public void setItemCurse(boolean itemCurse) {
+    public void setItemCurse(Curse itemCurse) {
         this.itemCurse = itemCurse;
     }
 
