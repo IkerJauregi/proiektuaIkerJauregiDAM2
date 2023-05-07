@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { displaySelectedMaster } from '../../Services/MasterApi';
 import { CardMaster, CardCampaign } from '../Card/CardMaster';
+import HeaderMenu from '../Layout/Layout';
 
 function CampaignList() {
   const [campaigns, setCampaigns] = useState([]);
@@ -19,6 +20,7 @@ function CampaignList() {
 
   return (
     <div>
+      <HeaderMenu/>
       <h1>Lista de Campañas</h1>
       <ul>
         {campaigns && campaigns.map(campaign => (
