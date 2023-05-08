@@ -7,17 +7,18 @@ public class Npc {
     private String npcName;
     private String npcDescription;
     private List<String> npcTags;
-    private String npcImage;
+    private List<String> npcInventory;
 
     public Npc() {
     }
 
-    public Npc(int id, String npcName, String npcDescription, List<String> npcTags, String npcImage) {
+    public Npc(int id, String npcName, String npcDescription, List<String> npcTags, List<String> npcInventory,
+            String npcImage) {
         this.id = id;
         this.npcName = npcName;
         this.npcDescription = npcDescription;
         this.npcTags = npcTags;
-        this.npcImage = npcImage;
+        this.npcInventory = npcInventory;
     }
 
     public int getId() {
@@ -52,12 +53,11 @@ public class Npc {
         this.npcTags = npcTags;
     }
 
-    public String getNpcImage() {
-        return npcImage;
+    public List<String> getNpcInventory() {
+        return npcInventory;
     }
 
-    public void setNpcImage(String npcImage) {
-        this.npcImage = npcImage;
+    public void setNpcInventory(List<String> npcInventory) {
+        this.npcInventory = npcInventory;
     }
-    
 }

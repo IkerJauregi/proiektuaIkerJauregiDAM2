@@ -23,6 +23,9 @@ import com.mongodb.client.model.Updates;
 import com.restapirol.model.adventurer.Adventurer;
 import com.restapirol.model.campaign.Campaign;
 import com.restapirol.model.campaign.item.Item;
+import com.restapirol.model.campaign.npc.Npc;
+import com.restapirol.model.campaign.quest.Quest;
+import com.restapirol.model.campaign.town.Town;
 import com.restapirol.model.monster.Monster;
 
 @Repository
@@ -115,23 +118,73 @@ public class MongoDBUserRepository implements UserRepository {
 
     @Override
     public Userr saveItem(Userr userr) {
-        // Recorre las campañas del usuario y actualiza los items de cada campaña
+        // Update the items in the campaigns collection for each campaign
         userr.getCampaigns().forEach(campaign -> {
             List<Item> items = campaign.getItem();
-            // Crea el filtro para identificar la campaña en la colección
+            // Create the filter to identify the campaign in the collection
             Bson filter = Filters.eq("_id", campaign.getId());
-            // Crea la actualización para establecer los nuevos items en la campaña
-            Bson update = Updates.set("item", items);
-            // Ejecuta la actualización en la colección de campañas
+            // Create the update to add the new items to the campaign
+            Bson update = Updates.pushEach("item", items);
+            // Execute the update in the collection of campaigns
             userrCollection.updateOne(filter, update);
         });
-    
-        // Actualiza el usuario en la colección de usuarios
+
+        return userr;
+    }
+
+    @Override
+    public Userr saveNPC(Userr userr) {
+        // Remove the "npc" field from each campaign in the user's list of campaigns
+        userr.getCampaigns().forEach(campaign -> {
+            // Create a filter to identify the campaign in the collection
+            Bson filter = Filters.eq("_id", campaign.getId());
+            // Create an update to remove the "npc" field from the campaign
+            Bson update = Updates.unset("npc");
+            // Execute the update in the campaigns collection
+            userrCollection.updateOne(filter, update);
+        });
+
+        // Update the user in the users collection
         Bson userFilter = Filters.eq("_id", userr.getId());
         Bson userUpdate = new Document("$set", userr);
         userrCollection.updateOne(userFilter, userUpdate);
-    
+
         return userr;
     }
-    
+
+    @Override
+    public Userr saveTown(Userr userr) {
+        userr.getCampaigns().forEach(campaign -> {
+            List<Town> townList = campaign.getTown();
+            // Create a filter to identify the campaign in the collection
+            Bson filter = Filters.eq("_id", campaign.getId());
+            // Create a update to set the new items in the campaign
+            Bson update = Updates.set("town", townList);
+            // Execute the update in the campaigns collection
+            userrCollection.updateOne(filter, update);
+        });
+        // Update the user in the users collection
+        Bson userFilter = Filters.eq("_id", userr.getId());
+        Bson userUpdate = new Document("$set", userr);
+        userrCollection.updateOne(userFilter, userUpdate);
+        return userr;
+    }
+
+    @Override
+    public Userr saveQuest(Userr userr) {
+        userr.getCampaigns().forEach(campaign -> {
+            List<Quest> questList = campaign.getQuest();
+            // Create a filter to identify the campaign in the collection
+            Bson filter = Filters.eq("_id", campaign.getId());
+            // Create a update to set the new Quest in the campaign
+            Bson update = Updates.set("quest", questList);
+            // Execute the update in the campaigns collection
+            userrCollection.updateOne(filter, update);
+        });
+        // Update the user in the users collection
+        Bson userFilter = Filters.eq("_id", userr.getId());
+        Bson userUpdate = new Document("$set", userr);
+        userrCollection.updateOne(userFilter, userUpdate);
+        return userr;
+    }
 }

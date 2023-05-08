@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -169,8 +170,9 @@ public class ItemController {
             return ResponseEntity.notFound().build();
         }
     }
+
     // Update the item with the given ID from the campaign with the given ID
-    @PostMapping(path = "/updateItem/{userID}/{campaignID}/{itemID}")
+    @PutMapping(path = "/updateItem/{userID}/{campaignID}/{itemID}")
     public ResponseEntity<Object> updateItem(@PathVariable int userID, @PathVariable int campaignID,
             @PathVariable int itemID, @RequestParam String itemName, @RequestParam String itemDescription,
             @RequestParam String itemClass, @RequestParam String itemStats, @RequestParam String curseName,

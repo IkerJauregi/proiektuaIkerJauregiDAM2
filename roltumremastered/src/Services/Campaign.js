@@ -7,7 +7,8 @@ export function displayCampaign(userID) {
       .then(response => response.json())
       .then(data => {
         let user = data;
-        let campaigns = user.campaign || [];
+        let campaigns = user.campaigns || [];
+        console.log("Data:", data);
         return { user, campaigns };
       })
       .catch(error => {
@@ -23,25 +24,26 @@ export function createCampaign(campaignName, campaignDescription) {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
       campaignName: campaignName,
-      campaignDescription: campaignDescription})
+      campaignDescription: campaignDescription
+    })
   };
   return fetch("http://localhost:8080/campaigns/createCampaign", requestOptions)
-  .then(response => {
-    if (response.status === 400) {
-      throw new Error("Bad request: Invalid input parameters");
-    } else if (!response.ok) {
-      throw new Error("Network response was not ok");
-    }
-    return response.json();
-  })
-  .then(data => {
-    console.log("Campaign created successfully:", data.message);
-    return data;
-  })
-  .catch(error => {
-    console.error("Campaign creation failed:", error);
-    throw error;
-  });
+    .then(response => {
+      if (response.status === 400) {
+        throw new Error("Bad request: Invalid input parameters");
+      } else if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      return response.json();
+    })
+    .then(data => {
+      console.log("Campaign created successfully:", data.message);
+      return data;
+    })
+    .catch(error => {
+      console.error("Campaign creation failed:", error);
+      throw error;
+    });
 }
 export function deleteCampaign(userID, campaignID) {
   if (!userID) {

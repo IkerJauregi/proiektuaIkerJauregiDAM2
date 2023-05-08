@@ -8,7 +8,7 @@ function Card({ campaign }) {
   const userID = sessionStorage.getItem("userId");
   const navigate = useNavigate();
   const [showUpdateForm, setShowUpdateForm] = useState(false); // nuevo estado
-
+  console.log("Card: ", campaign);
   const viewSelectedCampaign = () => {
     console.log("Viewing campaign: ", campaign);
   };

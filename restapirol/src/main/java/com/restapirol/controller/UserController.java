@@ -59,7 +59,6 @@ public class UserController {
         response.put("message", "User registered");
         return ResponseEntity.ok(response);
     }
-    
 
     // We receive a user object with name and password and if the user exists and
     // the password is correct we return the user
@@ -74,6 +73,7 @@ public class UserController {
         }
         return ResponseEntity.notFound().build();
     }
+
     // We receive a user object with name and password and if the user exists and
     // the password is correct we return the user
     @GetMapping(path = "/getUser")
@@ -86,7 +86,7 @@ public class UserController {
             return ResponseEntity.ok(userData);
         }
         return ResponseEntity.notFound().build();
-    }    
+    }
 
     @GetMapping(path = "/showMasterCampaigns/{userID}")
     public ResponseEntity<Userr> showMasterCampaigns(@PathVariable int userID) {
