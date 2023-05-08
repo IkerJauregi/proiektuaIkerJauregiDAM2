@@ -118,16 +118,19 @@ public class MongoDBUserRepository implements UserRepository {
 
     @Override
     public Userr saveItem(Userr userr) {
-        // Update the items in the campaigns collection for each campaign
+        // Remove the "item" field from each campaign in the user's list of campaigns
         userr.getCampaigns().forEach(campaign -> {
-            List<Item> items = campaign.getItem();
-            // Create the filter to identify the campaign in the collection
+            // Create a filter to identify the campaign in the collection
             Bson filter = Filters.eq("_id", campaign.getId());
-            // Create the update to add the new items to the campaign
-            Bson update = Updates.pushEach("item", items);
-            // Execute the update in the collection of campaigns
+            // Create an update to remove the "item" field from the campaign
+            Bson update = Updates.unset("item");
+            // Execute the update in the campaigns collection
             userrCollection.updateOne(filter, update);
         });
+        // Update the user in the users collection
+        Bson userFilter = Filters.eq("_id", userr.getId());
+        Bson userUpdate = new Document("$set", userr);
+        userrCollection.updateOne(userFilter, userUpdate);
 
         return userr;
     }
@@ -154,37 +157,41 @@ public class MongoDBUserRepository implements UserRepository {
 
     @Override
     public Userr saveTown(Userr userr) {
+        // Remove the "town" field from each campaign in the user's list of campaigns
         userr.getCampaigns().forEach(campaign -> {
-            List<Town> townList = campaign.getTown();
             // Create a filter to identify the campaign in the collection
             Bson filter = Filters.eq("_id", campaign.getId());
-            // Create a update to set the new items in the campaign
-            Bson update = Updates.set("town", townList);
+            // Create an update to remove the "town" field from the campaign
+            Bson update = Updates.unset("town");
             // Execute the update in the campaigns collection
             userrCollection.updateOne(filter, update);
         });
+
         // Update the user in the users collection
         Bson userFilter = Filters.eq("_id", userr.getId());
         Bson userUpdate = new Document("$set", userr);
         userrCollection.updateOne(userFilter, userUpdate);
+
         return userr;
     }
 
     @Override
     public Userr saveQuest(Userr userr) {
+        // Remove the "quest" field from each campaign in the user's list of campaigns
         userr.getCampaigns().forEach(campaign -> {
-            List<Quest> questList = campaign.getQuest();
             // Create a filter to identify the campaign in the collection
             Bson filter = Filters.eq("_id", campaign.getId());
-            // Create a update to set the new Quest in the campaign
-            Bson update = Updates.set("quest", questList);
+            // Create an update to remove the "quest" field from the campaign
+            Bson update = Updates.unset("quest");
             // Execute the update in the campaigns collection
             userrCollection.updateOne(filter, update);
         });
+
         // Update the user in the users collection
         Bson userFilter = Filters.eq("_id", userr.getId());
         Bson userUpdate = new Document("$set", userr);
         userrCollection.updateOne(userFilter, userUpdate);
+
         return userr;
     }
 }
