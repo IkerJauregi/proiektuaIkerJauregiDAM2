@@ -50,7 +50,7 @@ export function deleteAdventurer(userID, adventurerID) {
         console.log("No user ID provided");
         return [];
     } else {
-        return fetch(`http://localhost:8080/user/deleteAdventurer/${userID}/${adventurerID}`, {
+        return fetch(`http://localhost:8080/adventurer/deleteAdventurer/${userID}/${adventurerID}`, {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json"
@@ -62,6 +62,9 @@ export function deleteAdventurer(userID, adventurerID) {
                 let adventurers = user.adventurers || [];
                 console.log("Data:", data);
                 return { user, adventurers };
+            })
+            .then(() => {
+                window.location.reload();
             })
             .catch(error => {
                 console.log(error);

@@ -4,6 +4,7 @@ import { useState } from "react";
 import "./Card.css";
 import { deleteCampaign } from "../../Services/Campaign";
 import { CampaignUpdateForm } from "../Form/CampaignForm";
+import { deleteAdventurer } from "../../Services/Adventurer";
 function Card({ campaign }) {
   const userID = sessionStorage.getItem("userId");
   const navigate = useNavigate();
@@ -69,6 +70,7 @@ function AdventurerCard({ adventurer }) {
   };
   const deleteSelectedAdventurer = () => {
     console.log("Deleting adventurer: ", adventurer.id);
+    deleteAdventurer(userID, adventurer.id);
   };
   return (
     <div className="card-container">

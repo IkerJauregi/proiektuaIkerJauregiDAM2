@@ -62,6 +62,9 @@ export function deleteMonster(userID, monsterID){
             console.log("Data:", data);
             return { user, monsters };
         })
+        .then(() => {
+            window.location.reload();
+            })
         .catch(error => {
             console.log(error);
             throw error;
