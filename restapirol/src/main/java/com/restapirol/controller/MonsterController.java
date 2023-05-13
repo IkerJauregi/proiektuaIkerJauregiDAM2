@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -94,19 +95,18 @@ public class MonsterController {
         }
     }
     // Get all monsters
-    @GetMapping(path = "/getAllMonsters/{userID}")
+    @GetMapping(path = "/showMasterMonsters/{userID}")
     public ResponseEntity<Object> getAllMonsters(@PathVariable int userID) {
         Optional<Userr> userOptional = userRepository.findById(userID);
         if (userOptional.isPresent()) {
             Userr user = userOptional.get();
-            List<Monster> monstersList = user.getMonsters();
-            return ResponseEntity.ok(monstersList);
+            return ResponseEntity.ok(user);
         } else {
             return ResponseEntity.notFound().build();
         }
     }
     // Edit select monster
-    @PostMapping(path = "/editMonster/{userID}/{monsterID}")
+    @PutMapping(path = "/editMonster/{userID}/{monsterID}")
     public ResponseEntity<Object> editMonster(@PathVariable int userID, @PathVariable int monsterID, @RequestParam String name, @RequestParam String description,
             @RequestParam String size, @RequestParam String type, @RequestParam String alignment,
             @RequestParam int armorClass, @RequestParam int hitPoints, @RequestParam String speed,

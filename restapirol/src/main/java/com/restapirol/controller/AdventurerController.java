@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -132,7 +133,7 @@ public class AdventurerController {
     }
 
     // Edit selected adventurer
-    @PostMapping(path = "/editAdventurer/{userID}/{adventurerID}")
+    @PutMapping(path = "/editAdventurer/{userID}/{adventurerID}")
     public ResponseEntity<Userr> editAdventurer(@PathVariable int userID, @PathVariable int adventurerID,
             @RequestParam String name, @RequestParam String classAdventurer,
             @RequestParam String raceAdventurer, @RequestParam int level, @RequestParam List<String> languages,

@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -76,7 +77,7 @@ public class CampaignController {
     }
     // Edit a campaign
     //TODO prueba a cambiar el pathvariable por el requestparams en el id de la campaña
-    @PostMapping(path = "/editCampaign/{userID}/{campaignID}")
+    @PutMapping(path = "/editCampaign/{userID}/{campaignID}")
     public ResponseEntity<Userr> editCampaign(@PathVariable int userID, @PathVariable int campaignID,
             @RequestParam String campaignName, @RequestParam String campaignDescription) {
         Optional<Userr> userOptional = userRepository.findById(userID);

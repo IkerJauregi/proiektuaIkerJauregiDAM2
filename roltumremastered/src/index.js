@@ -6,8 +6,10 @@ import MenuACM from './Pages/MenuACM/MenuACM';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import CampaignList from './Components/Campaign/CampaignList';
+import { AdventurerList } from './Components/Adventurer/ShowAdventurerList';
 import Register from './Components/Form/Register';
 import { CampaignUpdateForm } from './Components/Form/CampaignForm';
+import ShowMonsterList from './Components/Monster/ShowMonster';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -18,6 +20,8 @@ root.render(
         <Route path="/register" element={<Register />} />
         <Route path="/menu-acm" element={<MenuACM />} />
         <Route path="/campaigns/:userId" element={<CampaignList />} />
+        <Route path="/adventurers/:userId" element={<AdventurerList />} />
+        <Route path="/monsters/:userId" element={<ShowMonsterList />} />
         <Route path="/update-campaign/:userId/:campaignId" element={<CampaignUpdateForm />} />
       </Routes>
     </BrowserRouter>

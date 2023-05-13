@@ -118,7 +118,7 @@ public class MongoDBUserRepository implements UserRepository {
 
     @Override
     public Userr saveItem(Userr userr) {
-        // Remove the "item" field from each campaign in the user's list of campaigns
+        // Remove the "item " field from each campaign in the user's list of campaigns
         userr.getCampaigns().forEach(campaign -> {
             // Create a filter to identify the campaign in the collection
             Bson filter = Filters.eq("_id", campaign.getId());

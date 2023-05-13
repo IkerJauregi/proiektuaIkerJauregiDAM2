@@ -17,6 +17,12 @@ function MenuACM() {
                 console.error(error);
             });
     };
+    const handleSeeAdventurers = (idUser) => {
+        navigate(`/adventurers/${idUser}`);
+    };
+    const handleSeeMonsters = (idUser) => {
+        navigate(`/monsters/${idUser}`);
+    };
 
     return (
         <div>
@@ -24,7 +30,7 @@ function MenuACM() {
             <div className="container">
                 <div className="left-section">
                     <h2 className="section-title">Aventureros</h2>
-                    <button className="section-button">Ver más</button>
+                    <button className="section-button" onClick={() => handleSeeAdventurers(idUser)}>Ver más</button>
                 </div>
                 <div className="middle-section">
                     <h2 className="section-title">Campañas</h2>
@@ -32,7 +38,7 @@ function MenuACM() {
                 </div>
                 <div className="right-section">
                     <h2 className="section-title">Monstruos</h2>
-                    <button className="section-button">Ver más</button>
+                    <button className="section-button" onClick={() => handleSeeMonsters(idUser)}>Ver más</button>
                 </div>
             </div>
         </div>
