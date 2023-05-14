@@ -46,3 +46,29 @@ export function deleteQuest(userID, campaignID, questID) {
             });
     }
 }
+export function createQuest(userID, campaignID, params) {
+    console.log("Creating quest: ", userID, campaignID, params);
+    if (!userID || !campaignID) {
+        console.log("No user ID or campaign ID provided");
+        return [];
+    } else {
+        return fetch(`http://localhost:8080/quest/createQuest/${userID}/${campaignID}?${params}`, {
+            method: "POST",
+        }).then(response => {
+            if (response.status === 400) {
+                throw new Error("Bad request: Invalid input parameters");
+            } else if (!response.ok) {
+                throw new Error("Network response was not ok");
+            }
+            return response.json();
+        })
+            .then(data => {
+                console.log("NPC created successfully:", data.message);
+                return data;
+            })
+            .catch(error => {
+                console.error("NPC creation failed:", error);
+                throw error;
+            });
+    }
+}

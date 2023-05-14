@@ -16,6 +16,11 @@ import ShowNpcList from './Components/Npc/ShowNpc';
 import { ShowQuestList } from './Components/Quest/ShowQuest';
 import { ShowTownList } from './Components/Town/ShowTown';
 import { ShowItemList } from './Components/Item/ShowItem';
+import { InsertCampaign } from './Components/Form/Campaign/CampaignForm';
+import { InsertNpc } from './Components/Form/Npc/NpcForm';
+import { InsertQuest } from './Components/Form/Quest/QuestForm';
+import { InsertTown } from './Components/Form/Town/TownForm';
+import { InsertItem } from './Components/Form/Item/ItemForm';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -39,6 +44,11 @@ root.render(
         <Route path="/monsters/:userId" element={<ShowMonsterList />} />
         {/* Insert data */}
         <Route path="/addAdventurers/:userId" element={<InsertAdventurer />} />
+        <Route path="/addNpcs/:userId/:campaignId" element={<InsertNpc />} />
+        <Route path="/addQuests/:userId/:campaignId" element={<InsertQuest />} />
+        <Route path="/addTowns/:userId/:campaignId" element={<InsertTown />} />
+        <Route path="/addItems/:userId/:campaignId" element={<InsertItem />} />
+        <Route path="/addCampaigns/:userId" element={< InsertCampaign />} />
         {/* Update data */}
         {/* <Route path="/update-campaign/:userId/:campaignId" element={<CampaignUpdateForm />} /> */}
       </Routes>

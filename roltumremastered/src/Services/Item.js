@@ -42,3 +42,31 @@ export function deleteItem(userID, campaignID, itemID){
         });
     }
 }
+export function createItem(userID, campaignID, params){
+    const requestOptions = {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: params
+    };
+    return fetch(`http://localhost:8080/item/createItem/${userID}/${campaignID}?${params}`, {
+        method: "POST",
+    })
+    .then(response => {
+        if(response.status === 400){
+            throw new Error("Bad request: Invalid input parameters");
+        } else if (!response.ok){
+            throw new Error("Server error");
+        } else {
+            return response.json();
+        }
+    })
+    .then(data => {
+        let items = data;
+        console.log("Data:", data);
+        return items;
+    })
+    .catch(error => {
+        console.error("Error:", error);
+        throw error;
+    });
+}

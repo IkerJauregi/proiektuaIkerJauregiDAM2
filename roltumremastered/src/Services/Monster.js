@@ -17,16 +17,15 @@ export function displayMonster(userID){
         });
     }
 }
-export function createMonster(userID, MonsterName, MonsterDescription){
+export function createMonster(userID, params){
     const requestOptions = {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-            MonsterName: MonsterName,
-            MonsterDescription: MonsterDescription
-        })
+        body: params
     };
-    return fetch(`http://localhost:8080/monster/createMonster/${userID}`, requestOptions)
+    return fetch(`http://localhost:8080/monster/createMonster/${userID}?${params}`, {
+        method: "POST",
+    })
     .then(response => {
         if (response.status === 400) {
             throw new Error("Bad request: Invalid input parameters");

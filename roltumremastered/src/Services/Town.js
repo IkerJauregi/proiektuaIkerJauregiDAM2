@@ -46,3 +46,28 @@ export function deleteTown(userID, campaignID, townID) {
             });
     }
 }
+
+export function createTown(userID, campaignID, params) {
+    if (!userID || !campaignID) {
+        console.log("No user ID or campaign ID provided");
+        return [];
+    } else {
+        return fetch(`http://localhost:8080/town/createTown/${userID}/${campaignID}?${params}`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: params
+        })
+            .then(response => response.json())
+            .then(data => {
+                let towns = data;
+                console.log("Data:", data);
+                return towns;
+            })
+            .catch(error => {
+                console.error("Error:", error);
+                throw error;
+            });
+    }
+}

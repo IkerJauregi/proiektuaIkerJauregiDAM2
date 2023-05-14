@@ -18,16 +18,15 @@ export function displayCampaign(userID) {
   }
 }
 
-export function createCampaign(campaignName, campaignDescription) {
+export function createCampaign(userID, params) {
   const requestOptions = {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      campaignName: campaignName,
-      campaignDescription: campaignDescription
-    })
+    body: params
   };
-  return fetch("http://localhost:8080/campaigns/createCampaign", requestOptions)
+  return fetch(`http://localhost:8080/campaigns/createCampaign/${userID}?${params}`, {
+    method: "POST",
+  })
     .then(response => {
       if (response.status === 400) {
         throw new Error("Bad request: Invalid input parameters");

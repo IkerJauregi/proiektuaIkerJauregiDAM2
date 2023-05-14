@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { displayNpcs } from "../../Services/Npc";
 import { NpcCard } from "../Card/Card";
 import HeaderMenu from "../Layout/Layout";
 function ShowNpcList() {
     const [npcs, setNpcs] = useState([]);
     const { userId, campaignId } = useParams();
-
+    const navigate = useNavigate();
     useEffect(() => {
         if (userId && campaignId) {
             displayNpcs(userId, campaignId)
@@ -17,11 +17,14 @@ function ShowNpcList() {
                 .catch(error => console.log(error));
         }
     }, [userId, campaignId]);
-
+    const addNPC = () => {
+        console.log("Adding new NPC");
+        navigate(`/addNpcs/${userId}/${campaignId}`);
+    };
     return (
         <div>
             <HeaderMenu />
-            <button className="button">Add new NPC</button>
+            <button className="button" onClick={addNPC}>Add new NPC</button>
             <div className="list-container">
                 {npcs && npcs.map(npc => (
                     <NpcCard key={npc.id} npc={npc} />
