@@ -3,5 +3,5 @@ export interface Npc{
     npcName: string;
     npcDescription: string;
     npcTags: string;
-    npcImage: string;
+    npcInventory: string[];
 }

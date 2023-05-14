@@ -41,5 +41,4 @@ function MonsterList({ monster }) {
         </div>
     );
 }
-
 export default MonsterList;

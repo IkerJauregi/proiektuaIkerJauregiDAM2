@@ -10,6 +10,6 @@ export interface Adventurer {
     money: string[];
     name: string;
     raceAdventurer: string;
-    stats: Stats[];
-    weapon: Weapon[];
+    stats: Stats;
+    weapon: Weapon;
 }

@@ -23,8 +23,6 @@ function Register() {
                     const { id, name } = response;
                     console.log("id:", id + " name:", name);
                     navigate("/");
-                    // displayCampaign(response.id)
-                    // navigate("/campaigns/${response.id}")
                     return response;
                 })
                 .catch((error) => {

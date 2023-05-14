@@ -8,7 +8,6 @@ export function displayAdventurer(userID) {
             .then(data => {
                 let user = data;
                 let adventurers = user.adventurers || [];
-                console.log("Data:", data);
                 return { user, adventurers };
             })
             .catch(error => {
@@ -17,16 +16,36 @@ export function displayAdventurer(userID) {
             });
     }
 }
-export function createAdventurer(userID, adventurerName, adventurerDescription) {
+export function selectedAdventurer(userID, adventurerID) {
+    if (!userID || !adventurerID) {
+        console.log("No user ID or adventurer ID provided");
+        return Promise.resolve([]); // Return an empty array wrapped in a resolved Promise
+    } else {
+        return fetch(`http://localhost:8080/adventurer/showAdventurer/${userID}/${adventurerID}`)
+            .then(response => response.json())
+            .then(data => {
+                console.log("Data:", data);
+                let adventurer = data;
+                console.log("Adventurer:", adventurer);
+                return adventurer; // Return the adventurer object directly
+            })
+            .catch(error => {
+                console.error("Error:", error);
+                throw error;
+            });
+    }
+}
+
+export function createAdventurer(userID, params) {
+    console.log("Creating adventurer...", params);
     const requestOptions = {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-            adventurerName: adventurerName,
-            adventurerDescription: adventurerDescription
-        })
+        body: params
     };
-    return fetch(`http://localhost:8080/user/createAdventurer/${userID}`, requestOptions)
+    return fetch(`http://localhost:8080/adventurer/createAdventurer/${userID}?${params}`, {
+        method: "POST",
+    })
         .then(response => {
             if (response.status === 400) {
                 throw new Error("Bad request: Invalid input parameters");

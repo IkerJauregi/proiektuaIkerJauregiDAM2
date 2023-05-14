@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -44,7 +43,7 @@ public class AdventurerController {
 
     // Create a new adventurer
     @PostMapping(path = "/createAdventurer/{userID}")
-    public ResponseEntity<Object> addNewAdventurer(@PathVariable int userID, @RequestParam String name,
+    public ResponseEntity<Object> addNewAdventurer(@PathVariable int userID, @RequestParam(value="name") String name,
             @RequestParam String classAdventurer,
             @RequestParam String raceAdventurer, @RequestParam int level, @RequestParam List<String> languages,
             @RequestParam List<String> inventory, @RequestParam int strength, @RequestParam int dexterity,
@@ -110,7 +109,23 @@ public class AdventurerController {
             return ResponseEntity.notFound().build();
         }
     }
-
+    // Get adventurer by id
+    @GetMapping(path = "/showAdventurer/{userID}/{adventurerID}")
+    public ResponseEntity<Adventurer> showAdventurer(@PathVariable int userID, @PathVariable int adventurerID) {
+        Optional<Userr> userOptional = userRepository.findById(userID);
+        if (userOptional.isPresent()) {
+            Userr user = userOptional.get();
+            List<Adventurer> adventurerList = user.getAdventurers();
+            for (Adventurer adventurer : adventurerList) {
+                if (adventurer.getId() == adventurerID) {
+                    return ResponseEntity.ok(adventurer);
+                }
+            }
+            return ResponseEntity.notFound().build();
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    } 
     // Delete selected adventurer
     @DeleteMapping(path = "/deleteAdventurer/{userID}/{adventurerID}")
     public ResponseEntity<Object> deleteAdventurer(@PathVariable int userID, @PathVariable int adventurerID) {

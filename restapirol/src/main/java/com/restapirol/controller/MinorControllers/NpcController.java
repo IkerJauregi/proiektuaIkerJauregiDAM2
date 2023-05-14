@@ -80,7 +80,7 @@ public class NpcController {
     // Delete the NPC with the given ID from the campaign with the given ID
     @DeleteMapping(path = "/deleteNpc/{userID}/{campaignID}/{npcID}")
     public ResponseEntity<Object> deleteNpc(@PathVariable int userID, @PathVariable int campaignID,
-            @RequestParam int npcID) {
+            @PathVariable int npcID) {
         Optional<Userr> userOptional = userRepository.findById(userID);
         // If the user exists, delete the NPC
         if (userOptional.isPresent()) {

@@ -1,7 +1,6 @@
 package com.restapirol.model;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
 import javax.annotation.PostConstruct;
@@ -22,10 +21,6 @@ import com.mongodb.client.model.Filters;
 import com.mongodb.client.model.Updates;
 import com.restapirol.model.adventurer.Adventurer;
 import com.restapirol.model.campaign.Campaign;
-import com.restapirol.model.campaign.item.Item;
-import com.restapirol.model.campaign.npc.Npc;
-import com.restapirol.model.campaign.quest.Quest;
-import com.restapirol.model.campaign.town.Town;
 import com.restapirol.model.monster.Monster;
 
 @Repository

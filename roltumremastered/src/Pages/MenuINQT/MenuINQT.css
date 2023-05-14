@@ -1,0 +1,36 @@
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    height: 100vh;
+}
+
+.leftTop-section {
+    grid-column: 1;
+    grid-row: 1;
+    background-color: #f2f2f2;
+
+    /* Estilos adicionales para el trozo superior izquierdo */
+}
+
+.rightTop-section {
+    grid-column: 2;
+    grid-row: 1;
+    background-color: #e6e6e6;
+
+    /* Estilos adicionales para el trozo superior derecho */
+}
+
+.leftBottom-section {
+    grid-column: 1;
+    grid-row: 2;
+    background-color: #d9d9d9;
+    /* Estilos adicionales para el trozo inferior izquierdo */
+}
+
+.rightBottom-section {
+    grid-column: 2;
+    grid-row: 2;
+    background-color: #cac5c5;
+    /* Estilos adicionales para el trozo inferior derecho */
+}
