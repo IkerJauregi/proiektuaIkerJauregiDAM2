@@ -7,12 +7,10 @@ import { deleteQuest } from "../../Services/Quest";
 import { deleteNPC } from "../../Services/Npc";
 import { deleteItem } from "../../Services/Item";
 import { deleteTown } from "../../Services/Town";
-import { CampaignUpdateForm } from "../Form/CampaignForm";
 import { deleteAdventurer } from "../../Services/Adventurer";
 function Card({ campaign }) {
   const userID = sessionStorage.getItem("userId");
   const navigate = useNavigate();
-  const [showUpdateForm, setShowUpdateForm] = useState(false); // nuevo estado
   console.log("Card: ", campaign);
   const viewSelectedCampaign = () => {
     console.log("Viewing campaign: ", campaign);
@@ -21,7 +19,6 @@ function Card({ campaign }) {
 
   const editSelectedCampaign = () => {
     console.log("Editing campaign: ", campaign);
-    setShowUpdateForm(true); // mostrar el formulario
   };
 
   const deleteSelectedCampaign = () => {
@@ -51,14 +48,6 @@ function Card({ campaign }) {
           </div>
         </div>
       </div>
-      {showUpdateForm && (
-        <CampaignUpdateForm
-          userID={userID}
-          campaignId={campaign.id}
-          campaignName={campaign.name}
-          campaignDescription={campaign.description}
-        />
-      )}
     </div>
   );
 }
@@ -179,6 +168,7 @@ function ItemCard({ item }) {
   }
   const deleteSelectedItem = () => {
     console.log("Deleting item: ", item.id);
+    deleteItem(userID, campaignId, item.id);
   }
   return (
     <div className="card-container">

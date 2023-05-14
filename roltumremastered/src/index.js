@@ -10,7 +10,6 @@ import CampaignList from './Components/Campaign/CampaignList';
 import { AdventurerList } from './Components/Adventurer/ShowAdventurerList';
 import { AdventurerSheet } from './Components/Adventurer/ShowAdventurerDetails';
 import Register from './Components/Form/Register';
-import { CampaignUpdateForm } from './Components/Form/CampaignForm';
 import ShowMonsterList from './Components/Monster/ShowMonster';
 import { InsertAdventurer } from './Components/Form/Character/AdventurerForm';
 import ShowNpcList from './Components/Npc/ShowNpc';
@@ -41,7 +40,7 @@ root.render(
         {/* Insert data */}
         <Route path="/addAdventurers/:userId" element={<InsertAdventurer />} />
         {/* Update data */}
-        <Route path="/update-campaign/:userId/:campaignId" element={<CampaignUpdateForm />} />
+        {/* <Route path="/update-campaign/:userId/:campaignId" element={<CampaignUpdateForm />} /> */}
       </Routes>
     </BrowserRouter>
   </React.StrictMode>,
