@@ -2,7 +2,7 @@ import HeaderMenu from "../Layout/Layout";
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { displayMonster } from "../../Services/Monster";
-import MonsterList from "../List/List";
+import { MonsterList} from "../List/List";
 
 function ShowMonsterList() {
   const [monsters, setMonsters] = useState([]);

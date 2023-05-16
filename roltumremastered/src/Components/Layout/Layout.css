@@ -8,21 +8,21 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #2d313a;
+    background:  #b993d6;
     color: white;
     padding: 1rem;
   }
   
-  .settings-btn {
-    background-color: #4caf50;
-    color: white;
+  .logout-btn {
+    background-color: #f0180d;
+    color: white; 
     border: none;
     border-radius: 4px;
     padding: 0.5rem 1rem;
     cursor: pointer;
   }
   
-  .settings-btn:hover {
-    background-color: #3e8e41;
+  .logout-btn:hover {
+    background-color: #af23d9;
   }
   

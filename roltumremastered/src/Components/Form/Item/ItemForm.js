@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { createItem } from "../../../Services/Item";
+import "./ItemForm.css";
 
 export function InsertItem() {
     const userID = sessionStorage.getItem("userId");
     const { campaignId } = useParams();
-    
+    const navigate = useNavigate();
     const [name, setName] = useState("");
     const [description, setDescription] = useState("");
     const [itemClass, setClass] = useState("");
@@ -24,45 +25,32 @@ export function InsertItem() {
             params.append("curseName", curseName);
             params.append("curseDescription", curseDescription);
             await createItem(userID, campaignId, params.toString());
+            navigate(`/items/${userID}/${campaignId}`);
         } catch (error) {
             console.log(error);
         }
     };
     return (
-        <form onSubmit={handleSubmit}>
-            <label>
-                User ID:
-                <input type="text" disabled value={userID} />
-            </label>
-            <label>
-                Campaign ID:
-                <input type="text" disabled value={campaignId} />
-            </label>
-            <label>
-                Name:
-                <input type="text" value={name} onChange={(event) => setName(event.target.value)} />
-            </label>
-            <label>
-                Description:
-                <input type="text" value={description} onChange={(event) => setDescription(event.target.value)} />
-            </label>
-            <label>
-                Class:
-                <input type="text" value={itemClass} onChange={(event) => setClass(event.target.value)} />
-            </label>
-            <label>
-                Stats:
-                <input type="text" value={itemStats} onChange={(event) => setStats(event.target.value)} />
-            </label>
-            <label>
-                Curse Name:
-                <input type="text" value={curseName} onChange={(event) => setCurseName(event.target.value)} />
-            </label>
-            <label>
-                Curse Description:
-                <input type="text" value={curseDescription} onChange={(event) => setCurseDescription(event.target.value)} />
-            </label>
-            <input type="submit" value="Submit" />
-        </form>
+        <div id="form-containerItem">
+            <form id="formItem" onSubmit={handleSubmit}>
+                <h1>Create Item</h1>
+                <div id="idContainer">
+                    <label>UID:</label>
+                    <input id="smallInput" type="text" disabled value={userID} />
+                    <label>CID:</label>
+                    <input id="smallInput" type="text" disabled value={campaignId} />
+                </div>
+                <div id="editableContainer">
+                    <input id="normalInput" type="text" value={name} placeholder="Name" required onChange={(event) => setName(event.target.value)} />
+                    <input id="normalInput" type="text" value={description} placeholder="Description" required onChange={(event) => setDescription(event.target.value)} />
+                    <input id="normalInput" type="text" value={itemClass} placeholder="Class" required onChange={(event) => setClass(event.target.value)} />
+                    <input id="normalInput" type="text" value={itemStats} placeholder="Stats" required onChange={(event) => setStats(event.target.value)} />
+                    <input id="normalInput" type="text" value={curseName} placeholder="Curse name" required onChange={(event) => setCurseName(event.target.value)} />
+                    <input id="normalInput" type="text" value={curseDescription} placeholder="Curse Description" required onChange={(event) => setCurseDescription(event.target.value)} />
+                    <input id="submitButton" type="submit" value="Submit" />
+                    <a href={`/items/${userID}/${campaignId}`}>Go back</a>
+                </div>
+            </form>
+        </div>
     );
 }

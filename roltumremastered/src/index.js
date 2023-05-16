@@ -8,7 +8,6 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import CampaignList from './Components/Campaign/CampaignList';
 import { AdventurerList } from './Components/Adventurer/ShowAdventurerList';
-import { AdventurerSheet } from './Components/Adventurer/ShowAdventurerDetails';
 import Register from './Components/Form/Register';
 import ShowMonsterList from './Components/Monster/ShowMonster';
 import { InsertAdventurer } from './Components/Form/Character/AdventurerForm';
@@ -37,7 +36,6 @@ root.render(
         {/* Show data */}
         <Route path="/campaigns/:userId" element={<CampaignList />} />
         <Route path="/adventurers/:userId" element={<AdventurerList />} />
-        <Route path="/selectedadventurer/:userId/:adventurerId" element={<AdventurerSheet />} />
         <Route path="npcs/:userId/:campaignId" element={<ShowNpcList />} />
         <Route path="quests/:userId/:campaignId" element={<ShowQuestList />} />
         <Route path="towns/:userId/:campaignId" element={<ShowTownList />} />

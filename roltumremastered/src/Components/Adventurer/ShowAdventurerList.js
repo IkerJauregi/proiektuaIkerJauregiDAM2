@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { displayAdventurer } from '../../Services/Adventurer';
 import { Card, AdventurerCard } from '../Card/Card';
+import { AdventurersList } from '../List/List';
 import HeaderMenu from '../Layout/Layout';
-import './ShowAdventurerList.css';
 
 export default function AdventurerList() {
     const [adventurers, setAdventurers] = useState([]);
@@ -30,7 +30,7 @@ export default function AdventurerList() {
             <button className="button" onClick={addAdventurer}>Add new Adventurer</button>
             <div className="list-container">
                 {adventurers && adventurers.map(adventurer => (
-                    <AdventurerCard key={adventurer.id} adventurer={adventurer} />
+                    <AdventurersList key={adventurer.id} adventurer={adventurer} />
                 ))}
             </div>
         </div>
