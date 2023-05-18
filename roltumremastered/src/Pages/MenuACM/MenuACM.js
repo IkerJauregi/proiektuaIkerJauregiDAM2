@@ -27,18 +27,15 @@ function MenuACM() {
     return (
         <div>
             <HeaderMenu />
-            <div className="container">
-                <div className="left-section">
-                    <h2 className="section-title">Aventureros</h2>
-                    <button className="section-button" onClick={() => handleSeeAdventurers(idUser)}>Ver más</button>
+            <div className="containerAcm">
+                <div className="left-sectionAcm">
+                    <button className="section-button" onClick={() => handleSeeAdventurers(idUser)}>Adventurers</button>
                 </div>
-                <div className="middle-section">
-                    <h2 className="section-title">Campañas</h2>
-                    <button className="section-button" onClick={() => handleSeeCampaigns(idUser)}>Ver más</button>
+                <div className="middle-sectionAcm">
+                    <button className="section-button" onClick={() => handleSeeCampaigns(idUser)}>Campaigns</button>
                 </div>
-                <div className="right-section">
-                    <h2 className="section-title">Monstruos</h2>
-                    <button className="section-button" onClick={() => handleSeeMonsters(idUser)}>Ver más</button>
+                <div className="right-sectionAcm">
+                    <button className="section-button" onClick={() => handleSeeMonsters(idUser)}>Monsters</button>
                 </div>
             </div>
         </div>

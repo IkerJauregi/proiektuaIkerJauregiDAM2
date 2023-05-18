@@ -23,20 +23,16 @@ export default function MenuINQT() {
             <HeaderMenu />
             <div className="container">
                 <div className="leftTop-section">
-                    <h2 className="section-title">NPC</h2>
-                    <button className="section-button" onClick={() => handleSeeNPCs(userId, campaignId)}>Ver más</button>
+                    <button className="section-button" onClick={() => handleSeeNPCs(userId, campaignId)}>NPC</button>
                 </div>
                 <div className="rightTop-section">
-                    <h2 className="section-title">Town</h2>
-                    <button className="section-button" onClick={() => handleSeeTowns(userId, campaignId)}>Ver más</button>
+                    <button className="section-button" onClick={() => handleSeeTowns(userId, campaignId)}>Town</button>
                 </div>
                 <div className="leftBotton-section">
-                    <h2 className="section-title">Quest</h2>
-                    <button className="section-button" onClick={() => handleSeeQuests(userId, campaignId)}>Ver más</button>
+                    <button className="section-button" onClick={() => handleSeeQuests(userId, campaignId)}>Quest</button>
                 </div>
                 <div className="rightBottom-section">
-                    <h2 className="section-title">Item</h2>
-                    <button className="section-button" onClick={() => handleSeeItems(userId, campaignId)}>Ver más</button>
+                    <button className="section-button" onClick={() => handleSeeItems(userId, campaignId)}>Item</button>
                 </div>
             </div>
         </div>

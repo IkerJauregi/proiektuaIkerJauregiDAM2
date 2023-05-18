@@ -92,10 +92,17 @@ function AdventurersList({ adventurer }) {
     const userID = sessionStorage.getItem("userId");
     const navigate = useNavigate();
     const [showDetails, setShowDetails] = useState(false);
-
+    let number = 0;
     const viewSelectedAdventurer = () => {
         console.log("Viewing adventurer: ", adventurer);
-        setShowDetails(true);
+        if(number === 0){
+            setShowDetails(true);
+            number = 1;
+        }else{
+            setShowDetails(false);
+            number = 0;
+        }
+        
     };
     const editSelectedAdventurer = () => {
         console.log("Editing adventurer: ", adventurer);
@@ -119,7 +126,7 @@ function AdventurersList({ adventurer }) {
                         </div>
                         <div className="button-container">
                             <button className="view-button" onClick={viewSelectedAdventurer}>View</button>
-                            <button className="edit-button" onClick={editSelectedAdventurer}>Edit</button>
+                            {/* <button className="edit-button" onClick={editSelectedAdventurer}>Edit</button> */}
                             <button className="delete-button" onClick={deleteSelectedAdventurer}>Delete</button>
                         </div>
                     </div>
@@ -178,8 +185,6 @@ function AdventurersList({ adventurer }) {
                                 ))}
                             </ul>
                         </div>
-
-                        <button className="close-button" onClick={() => setShowDetails(false)}>Cerrar</button>
                     </div>
                 )}
             </ul>

@@ -10,6 +10,7 @@ function HeaderMenu(props) {
     return (
       <nav className="app-header">
         <h1>Roltum</h1>
+        <a href={`/menu-acm`}>Go to the menu</a>
         <button className="logout-btn" onClick={logOut}>Log out</button>
       </nav>
     );

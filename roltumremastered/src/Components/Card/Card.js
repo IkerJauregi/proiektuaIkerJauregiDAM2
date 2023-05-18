@@ -109,12 +109,13 @@ function NpcCard({ npc }) {
         <div className="card-content">
           <h2 className="card-title">Name: {npc.npcName}</h2>
           <div className="card-image"></div>
-          <h3 className="card-description-title">Description: </h3>
-          <p className="card-description-text">{npc.npcDescription}</p>
+          <p className="card-description-text"><strong>Description:</strong> {npc.npcDescription}</p>
+          <p><strong>Tag:</strong> {npc.npcTags}</p>
+          <p><strong>Inventory:</strong> {npc.npcInventory}</p>
           <div className="buttons-card">
-            <button className="button-card" onClick={editSelectedNpc}>
+            {/* <button className="button-card" onClick={editSelectedNpc}>
               Edit
-            </button>
+            </button> */}
             <button className="button-card" onClick={deleteSelectedNpc}>
               Delete
             </button>
@@ -145,10 +146,11 @@ function QuestCard({ quest }) {
           <div className="card-image"></div>
           <h3 className="card-description-title">Description: </h3>
           <p className="card-description-text">{quest.questDescription}</p>
+          <p className="card-description-text">{quest.questBounty}</p>
           <div className="buttons-card">
-            <button className="button-card" onClick={editSelectedQuest}>
+            {/* <button className="button-card" onClick={editSelectedQuest}>
               Edit
-            </button>
+            </button> */}
             <button className="button-card" onClick={deleteSelectedQuest}>
               Delete
             </button>
@@ -178,6 +180,8 @@ function ItemCard({ item }) {
           <div className="card-image"></div>
           <h3 className="card-description-title">Description: </h3>
           <p className="card-description-text">{item.itemDescription}</p>
+          <p className="card-description-text">{item.itemClass}</p>
+          <p className="card-description-text">{item.itemStats}</p>
           <div className="buttons-card">
             <button className="button-card" onClick={editSelectedItem}>
               Edit

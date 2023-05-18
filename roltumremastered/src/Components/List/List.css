@@ -1,5 +1,5 @@
 .list {
-  width: 100vw;
+  width: 94vw;
   margin: 0;
 }
 
@@ -29,7 +29,6 @@
   width: 100px;
   height: 100px;
   background-color: #ccc;
-  margin-right: 10px;
 }
 
 .details {
@@ -66,11 +65,9 @@
 /* Dropdown */
 .adventurer-details {
   background-color: #f0f0f0;
-  padding: 20px;
+  width: 94vw;
   border: 1px solid #ccc;
-  display: flex;
   flex-wrap: wrap;
-  gap: 20px;
 }
 
 .adventurer-stats {
