@@ -39,9 +39,9 @@ function Card({ campaign }) {
             <button className="button-card" onClick={viewSelectedCampaign}>
               View
             </button>
-            <button className="button-card" onClick={editSelectedCampaign}>
+            {/* <button className="button-card" onClick={editSelectedCampaign}>
               Edit
-            </button>
+            </button> */}
             <button className="button-card" onClick={deleteSelectedCampaign}>
               Delete
             </button>
@@ -78,9 +78,9 @@ function AdventurerCard({ adventurer }) {
             <button className="button-card" onClick={viewSelectedAdventurer}>
               View
             </button>
-            <button className="button-card" onClick={editSelectedAdventurer}>
+            {/* <button className="button-card" onClick={editSelectedAdventurer}>
               Edit
-            </button>
+            </button> */}
             <button className="button-card" onClick={deleteSelectedAdventurer}>
               Delete
             </button>
@@ -183,9 +183,9 @@ function ItemCard({ item }) {
           <p className="card-description-text">{item.itemClass}</p>
           <p className="card-description-text">{item.itemStats}</p>
           <div className="buttons-card">
-            <button className="button-card" onClick={editSelectedItem}>
+            {/* <button className="button-card" onClick={editSelectedItem}>
               Edit
-            </button>
+            </button> */}
             <button className="button-card" onClick={deleteSelectedItem}>
               Delete
             </button>
@@ -216,9 +216,9 @@ function TownCard({ town }) {
           <h3 className="card-description-title">Description: </h3>
           <p className="card-description-text">{town.description}</p>
           <div className="buttons-card">
-            <button className="button-card" onClick={editSelectedTown}>
+            {/* <button className="button-card" onClick={editSelectedTown}>
               Edit
-            </button>
+            </button> */}
             <button className="button-card" onClick={deleteSelectedTown}>
               Delete
             </button>

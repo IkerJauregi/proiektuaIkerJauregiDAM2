@@ -5,7 +5,6 @@
     flex-wrap: wrap;
     justify-content: space-between;
     padding: 1vh;
-    border-style: dashed;
     max-width: 100%;
 }
 .button {

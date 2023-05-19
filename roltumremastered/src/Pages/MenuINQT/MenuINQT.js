@@ -28,7 +28,7 @@ export default function MenuINQT() {
                 <div className="rightTop-section">
                     <button className="section-button" onClick={() => handleSeeTowns(userId, campaignId)}>Town</button>
                 </div>
-                <div className="leftBotton-section">
+                <div className="leftBottom-section">
                     <button className="section-button" onClick={() => handleSeeQuests(userId, campaignId)}>Quest</button>
                 </div>
                 <div className="rightBottom-section">
