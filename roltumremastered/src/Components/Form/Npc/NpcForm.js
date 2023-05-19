@@ -21,7 +21,6 @@ export function InsertNpc() {
             params.append("npcTags", tags);
             await createNPC(userID, campaignId, params.toString());
             navigate(`/npcs/${userID}/${campaignId}`);
-            alert("NPC created successfully!");
         } catch (error) {
             console.log(error);
         }
